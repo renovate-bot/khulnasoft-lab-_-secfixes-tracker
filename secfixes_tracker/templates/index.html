@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<h1>Security Issue Tracker</h1>
+
+<p>This is a security issue tracker used to monitor security issues that affect the
+Alpine Linux distribution.  It is derived from the <a href="https://cve.mitre.org/">
+CVE dictionary</a>, the <a href="https://nvd.nist.gov">NVD database</a> and Alpine's
+own <a href="https://secdb.alpinelinux.org">security fixes database</a>.</p>
+
+<p>If you are a packager and your package erroneously appears vulnerable on this
+tracker, please make sure that your APKBUILD has secfixes data in it.  Once the
+corrected secfixes data is published, it should take less than 24 hours for the
+tracker to update.  If there are still problems, please ask in <code>#alpine-devel</code>
+on IRC.</p>
+
+{% for branch, _ in config['SECFIXES_REPOSITORIES'].items() %}
+<h2>{{ branch }}</h2>
+
+<ul>
+<li><a href="{{ url_for('show_branch', branch=branch) }}">Potentially vulnerable packages in {{ branch }}</a></li>
+<li><a href="{{ url_for('show_orphaned_vulns_for_branch', branch=branch) }}">Potentially vulnerable <strong>orphaned</strong> packages in {{ branch }}</a></li>
+<li><a href="{{ url_for('show_orphaned_for_branch', branch=branch) }}"><strong>Orphaned</strong> packages in {{ branch }}</a></li>
+<li><a href="{{ url_for('show_maintainer_issues', branch=branch) }}">Issues by maintainer for {{ branch }}</a></li>
+</ul>
+{% endfor %}
+
+<p>Any URI on this tracker may be fetched with <code>Accept: application/ld+json</code>
+to get an equivalent JSON-LD document.</p>
+{% endblock %}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %} &mdash; Alpine Security Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+
+  <body>
+    <header>
+      <a href="/"><img id="logo" src="/static/alpinelinux-logo.svg" alt="Alpine Linux"></a>
+    </header>
+
+    {% block body %}{% endblock %}
+
+    <footer>
+      secfixes-tracker {{ config['SECFIXES_TRACKER_VERSION'] }} &mdash;
+      <a href="https://gitlab.alpinelinux.org/kaniini/secfixes-tracker" target="_blank">Source code</a>
+    </footer>
+  </body>
+</html>
