@@ -15,7 +15,7 @@ jobs:
       SECFIXES_TRACKER_CONFIG: application.cfg
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Install dependencies
         run: |
           apk add alpine-sdk gcc musl-dev libc-dev
