@@ -9,13 +9,13 @@ jobs:
     name: Update
     runs-on: ubuntu-latest
     container:
-      image: python:3.12-alpine
+      image: python:3.9-alpine
     env:
       FLASK_APP: secfixes_tracker
       SECFIXES_TRACKER_CONFIG: application.cfg
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
       - name: Install dependencies
         run: |
           apk add alpine-sdk gcc musl-dev libc-dev
