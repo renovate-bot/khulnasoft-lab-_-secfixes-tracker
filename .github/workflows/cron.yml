@@ -9,7 +9,7 @@ jobs:
     name: Update
     runs-on: ubuntu-latest
     container:
-      image: python:3.12-alpine
+      image: python:3.13-alpine
     env:
       FLASK_APP: secfixes_tracker
       SECFIXES_TRACKER_CONFIG: application.cfg
